@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sisense AutoML</title>
+    <link rel="stylesheet" href="/css/addData.css" />
+
+
+</head>
+<body>
+    <div class="app">
+        <div class="inputs">
+                <img src="/images/automl.png" class="automl-img" alt="AutoMl logo">
+                <form class="single-select-filter">
+                    <label><input type="radio" name="filter" onclick="addData()" value="addData"> Add Data</label>
+                    <label><input type="radio" name="filter" onclick="eda()" value="EDA"> EDA</label>                  
+                    <label><input type="radio" name="filter" onclick="modelTraining()" id="xs"> Model Training </label>
+                    <label><input type="radio" name="filter" onclick="downloadModel()"> Download Model</label>
+                    <!-- <label><input type="radio" name="filter" onclick="deployModel()"> Deploy Model</label> -->
+                    <label><input type="radio" name="filter" value="Deploy Model"> Inference </label>
+                    <label><input type="radio" name="filter" onclick="chatBot()" value="Gen AI"> Gen AI</label>
+                </form>
+        </div>
+        <div class="header">
+            <img src="/images/Sisense_logo_new.webp" class="sisense-img" alt="Sisense logo">
+
+        <div id="dataModelTableContainer"></div> <!-- Container for the dropdown -->
+        <div id="schemaContainer"></div> <!-- Container for the dropdown -->
+        <div id="columnContainer"></div>
+        <div id="buttonContainer"></div>
+        <div id="edaContainer" style="display: none;"></div>
+        <div id="providerContainer" style="display: none;">
+            <img id="scikit_learn" src="/images/Scikit_learn.png" alt="Loading Image">
+            <img id="amazon" src="/images/auto_pilot.png" alt="Loading Image">
+            <img id="databricks" src="/images/databricks.png" alt="Loading Image">
+            <img id="google" src="/images/vertex_ai.png" alt="Loading Image">
+            <img id="microsoft" src="/images/azure.png" alt="Loading Image">
+            <img id="ibm" src="/images/ibm.png" alt="Loading Image">
+        </div>
+        <div id="statusMessage"></div>
+        <div id="spinnerContainer">
+            <div class="spinner spinner1"></div>
+            <div class="spinner spinner2"></div>
+            <div class="spinner spinner3"></div>
+            <div class="spinner spinner4"></div>
+            <div class="spinner spinner5"></div>
+            <div class="spinner spinner6"></div>
+            <div class="spinner spinner7"></div>
+            <div class="spinner spinner8"></div>
+        </div>
+        <div id="modelInfoTableContainer" style="display: none;"></div>
+        <div id="deploymodelContainer" style="display: none;"></div>
+        
+        <!-- Chatbot Section -->
+        <div id="chatbotContainer" style="display: none;"></div>
+
+    </div>
+    </div>
+    
+</body>
+<script type="module" src="/js/addData.js"></script>
+</html>
+

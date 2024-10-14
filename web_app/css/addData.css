@@ -1,0 +1,770 @@
+*{
+    margin: 0;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: whitesmoke;
+}
+
+.sisense-img {
+    width: 350px;  /* Set the width */
+    height: 90px;  /* Set the height */
+    object-fit: contain; 
+    margin-top: -30px;
+}
+
+
+
+.app {
+    display: flex;
+    flex-direction: row;
+}
+
+.inputs {
+    display: flex;
+    width: 20%;
+    height: 100vh;
+    background-color: #222;
+    padding: 20px;
+    box-sizing: border-box; 
+    flex-direction: column; 
+
+}
+
+.single-select-filter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    align-items: flex-start; 
+    background-color: #222;
+    margin-top: 200px;
+    height: 150px;
+    padding: 10px;
+}
+
+
+.single-select-filter label {
+    display: block;
+    padding: 8px 16px;
+    background-color: #222;
+    accent-color: red;
+    cursor: pointer;
+    color: gray;
+
+}
+
+.single-select-filter input {
+    margin-right: 5px;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    justify-content: center; 
+    align-self: flex-start;
+    align-items: center;
+    padding: 20px;  
+    /* height: 970px;  */
+}
+
+#dataModelTableContainer {
+    display: flex;
+    justify-content: flex-start; /* Center horizontally */
+    align-items: flex-start; /* Center vertically */
+    /* min-height: 500px; */
+    height: 700px; 
+    /* max-height: 700px; */
+    margin-top: 50px;   /* 70 */
+    margin-right: 1200px; /* 1300 */
+    border-radius: 8px;
+    box-shadow: 0 0 40px 0 rgba(0,0,0,.15);
+    position: relative;
+    overflow-y: auto;
+    background-color: #222;
+}
+
+#dataModelTable {
+    background-color: lightgray;
+    border-collapse: collapse;
+    overflow: auto;
+    /* width: 300px; */
+    min-width: 300px;
+}
+
+#dataModelTable thead th {
+    position: sticky;
+    top: 0;
+}
+
+#dataModelTable th {
+    position: sticky;
+    top: 0;
+    padding: 8px;
+    font-family: Lato-Bold;
+    font-size: 18px;
+    color: #00ad5f;
+    background-color: #393939;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 300px;
+    
+}
+
+#dataModelTable td {
+    padding: 8px;
+    line-height: .7;
+    font-family: Lato-Regular;
+    font-size: 15px;
+    line-height: 1.4;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    
+}
+
+
+#dataModelTable tr:nth-child(even) td {
+    background-color: #222;;
+    color: gray;
+}
+
+#dataModelTable tr:nth-child(odd) td {
+    background-color: #222;;
+    color: gray;
+}
+
+#schemaContainer {
+    /* display: flex; */
+    justify-content: flex-start; /* Center horizontally */
+    align-items: flex-start; /* Center vertically */
+    /* min-height: 500px; */
+    height: 700px; 
+    /* max-height: 700px; */
+    margin-top: -700px;
+    margin-right: 500px; /* 600 */
+    border-radius: 8px;
+    box-shadow: 0 0 40px 0 rgba(0,0,0,.15);
+    position: relative;
+    overflow-y: auto;
+    background-color: #222;
+    /* min-width: 300px; */
+}
+
+#schemaTable {
+    border-collapse: collapse;
+    overflow: auto;
+    min-width: 300px;
+}
+
+#schemaTable thead th {
+    position: sticky;
+    top: 0;
+}
+
+#schemaTable th {
+    position: sticky;
+    top: 0;
+    padding: 8px;
+    font-family: Lato-Bold;
+    font-size: 18px;
+    color: #00ad5f;
+    background-color: #393939;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 300px;
+    
+}
+
+#schemaTable td {
+    padding: 8px;
+    line-height: .7;
+    font-family: Lato-Regular;
+    font-size: 15px;
+    line-height: 1.4;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    
+}
+
+
+#schemaTable tr:nth-child(even) td {
+    background-color: #222;;
+    color: gray;
+}
+
+#schemaTable tr:nth-child(odd) td {
+    background-color: #222;;      /* remove this and background color from top */
+    color: gray;
+}
+
+#columnContainer {
+    /* display: flex; */
+    justify-content: flex-start; /* Center horizontally */
+    align-items: flex-start; /* Center vertically */
+    /* min-height: 500px; */
+    height: 700px; 
+    /* max-height: 700px; */
+    margin-top: -700px;
+    margin-right: -200px; /* -100 */
+    border-radius: 8px;
+    box-shadow: 0 0 40px 0 rgba(0,0,0,.15);
+    position: relative;
+    overflow-y: auto;
+    background-color: #222;
+    /* min-width: 300px; */
+}
+
+#columnTable {
+    border-collapse: collapse;
+    overflow: auto;
+    min-width: 300px;
+}
+
+#columnTable thead th {
+    position: sticky;
+    top: 0;
+}
+
+#columnTable th {
+    position: sticky;
+    top: 0;
+    padding: 8px;
+    font-family: Lato-Bold;
+    font-size: 18px;
+    color: #00ad5f;
+    background-color: #393939;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 300px;
+    
+}
+
+#columnTable td {
+    padding: 8px;
+    line-height: .7;
+    font-family: Lato-Regular;
+    font-size: 15px;
+    line-height: 1.4;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    
+}
+
+
+#columnTable tr:nth-child(even) td {
+    background-color: #222;;
+    color: gray;
+}
+
+#columnTable tr:nth-child(odd) td {
+    background-color: #222;;
+    color: gray;
+}
+
+.header img {
+    margin-right: 10px;
+    height: 150px;
+    
+}
+
+.inputs img {
+    display: flex;
+    background-color: #222;
+    justify-content: center; 
+    align-self: center;
+    align-items: center;
+    width: 300px;
+    margin-top: 2px;
+
+    
+}
+
+
+.loading-indicator {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000; 
+}
+
+
+
+button.clickable-button {
+    background-color: #222;
+    color: gray;
+    border: none;
+    cursor: pointer;
+}
+
+.dm-button-clicked {
+    border-radius: 5px;
+    background: linear-gradient(to right, #ffb369 0%,#ff4272 100%);
+    color: white !important;
+}
+
+
+.category-button-clicked {
+    border-radius: 5px;
+    background: linear-gradient(to right, #ffb369 0%,#ff4272 100%);
+    color: white;
+}
+
+#buttonContainer {
+    display: flex;
+    flex-direction: column;
+    margin-right: -800px; /* -700 */
+    margin-top: -500px;
+}
+
+#buttonContainer .category-button {
+    display: flex;
+    background-color: #222;
+    box-shadow: 0 0 40px 0 rgba(0,0,0,.15);
+    flex-direction: column;
+    margin-bottom: 100px;
+    width: 200px;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-family: Lato-Regular;
+    border: 1px solid black;
+    font-size: 16px;
+    color: #00ad5f;
+    cursor: pointer; /* Add this line to change cursor on hover */
+
+}
+
+.category-button-clicked {
+    border-radius: 5px;
+    background: linear-gradient(to right, #ffb369 0%,#ff4272 100%); /* Darker green on hover */
+    color: white !important;
+}
+
+
+
+/* Add new styles for the SUBMIT button */
+.submit-button {
+    background: black;
+    display: flex;
+    flex-direction: row;
+    color: white; /* White text color */
+    font-family: Lato-Regular;
+    border: 1px solid black; /* No border */
+    border-radius: 150px; /* Rounded corners */
+    cursor: pointer; /* Cursor on hover */
+    justify-content: center;
+    align-items: center;
+    margin-top: -280px;
+    margin-left: auto;
+    margin-right: -250px;  /* 320 */
+    width: 200px;
+    font-size: 18px;
+    height: 75px;
+    line-height:440%;
+    color: #00ad5f;
+}
+
+.submit-button:hover {
+    background: linear-gradient(to right, #ffb369 0%,#ff4272 100%); /* Darker green on hover */
+    color: white;
+}
+
+/* styles.css */
+
+/* Set the iframe and its container to take up the full height of the viewport */
+#edaContainer {
+    /* margin-bottom: 500px !important; */
+    /* display: none; */
+    margin-top: -15%;
+    /* margin-right: -100px */
+  }
+  
+#edaContainer iframe {
+    width: 1500px;
+    height: 800px;
+    border: none;
+}
+
+.message {
+    display: flex;
+    color: red;
+    font-family: Lato-Regular;
+    justify-content: center;
+    align-items: center;
+    width: 1000px;
+    font-size: 30px;
+    margin-top: 200px;
+}
+
+/* #providerContainer {
+
+} */
+
+#providerContainer img {
+    aspect-ratio: 5/2;
+    object-fit: contain;
+    padding: 10px;  /* 30 */
+    margin: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: 60px;
+    margin-top: 120px;
+
+}
+
+#statusMessage {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0); 
+    color: rgb(249, 12, 131);
+    font-family: Lato-Regular;
+    font-size: 30px;
+    position: fixed;
+    top: 55%;
+    left: 40%;
+    z-index: 1000;
+}
+
+
+/* Spinner styles */
+#spinnerContainer {
+    display: none;
+    position: absolute;
+    width: 50%; 
+    height: 50%; 
+    margin: 50px;
+    top: 10%;
+    left: 60%;
+
+}
+
+.spinner {
+    position: absolute;
+    width: 50%;
+    height: 20%;
+    border: 8px solid transparent;
+    border-radius: 100%;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    top: 40%;
+}
+
+.spinner1 {
+    margin-left: -130px;
+    margin-top: -130px;
+    width: 240px;
+    height: 240px;
+    border-color: #e000c9;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    animation: spin 12s infinite linear;
+}
+
+.spinner2 {
+    margin-left: -120px;
+    margin-top: -120px;
+    width: 220px;
+    height: 220px;
+    border-color: #7500ad;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    animation: spin2 12s infinite linear;
+}
+
+.spinner3 {
+    margin-left: -110px;
+    margin-top: -110px;
+    width: 200px;
+    height: 200px;
+    border-color: #0049d8;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    animation: spin3 4s infinite linear;
+}
+
+.spinner4 {
+    margin-left: -80px;
+    margin-top: -80px;
+    width: 140px;
+    height: 140px;
+    border-color: #0089ed;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    animation: spin4 4s infinite linear;
+}
+
+.spinner5 {
+    margin-left: -70px;
+    margin-top: -70px;
+    width: 120px;
+    height: 120px;
+    border-color: #00f2a9;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    animation: spin5 4s infinite linear;
+}
+
+.spinner6 {
+    margin-left: -60px;
+    margin-top: -60px;
+    width: 100px;
+    height: 100px;
+    border-color: #009e2c;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    animation: spin6 4s infinite linear;
+}
+
+.spinner7 {
+    margin-left: -40px;
+    margin-top: -40px;
+    width: 60px;
+    height: 60px;
+    border-color: #d4d800;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    animation: spin7 2s infinite linear;
+  
+}
+
+.spinner8 {
+    margin-left: -30px;
+    margin-top: -30px;
+    width: 40px;
+    height: 40px;
+    border-color: #c18b00;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    animation: spin8 2s infinite linear;
+}
+
+/* Keyframes for spin1, spin2, spin3, spin4 as you have defined */
+@keyframes spin {
+    0%  {transform: rotate(0deg);}
+    10%  {transform: rotate(-25deg);}
+    20%  {transform: rotate(47deg);}
+    30%  {transform: rotate(-125deg);}
+    40%  {transform: rotate(-25deg);}
+    50%  {transform: rotate(25deg);}
+    60%  {transform: rotate(165deg);}
+    70%  {transform: rotate(42deg);}
+    80%  {transform: rotate(180deg);}
+    90%  {transform: rotate(-300deg);}
+    100%{transform: rotate(360deg);}  
+  }
+  
+  @keyframes spin2 {
+    0%  {transform: rotate(0deg);}
+    100%{transform: rotate(360deg);}  
+  }
+  
+  @keyframes spin3 {
+    0%  {transform: rotate(0deg);}
+    60%  {transform: rotate(165deg);}
+    70%  {transform: rotate(42deg);}
+    100%{transform: rotate(360deg);}  
+  }
+  
+  @keyframes spin4 {
+    0%  {transform: rotate(0deg);}
+    100%{transform: rotate(360deg);}  
+  }
+  
+  @keyframes spin5 {
+    0%  {transform: rotate(0deg);}
+    10%  {transform: rotate(-25deg);}
+    20%  {transform: rotate(47deg);}
+    30%  {transform: rotate(-125deg);}
+    100%{transform: rotate(360deg);}  
+  }
+  
+  @keyframes spin6 {
+    0%  {transform: rotate(0deg);}
+    80%  {transform: rotate(180deg);}
+    90%  {transform: rotate(-300deg);}
+    100%{transform: rotate(360deg);}  
+  }
+  
+  @keyframes spin7 {
+    0%  {transform: rotate(0deg);}
+    100%{transform: rotate(-360deg);} 
+  }
+  
+  @keyframes spin8 {
+    0%  {transform: rotate(0deg);}
+    100%{transform: rotate(360deg);}  
+  }
+
+  .custom-table-header {
+    background-color: #4CAF50; /* Replace with your desired color */
+    color: white; /* Replace with your desired text color */
+    padding: 8px; /* Adjust padding as needed */
+    text-align: center; /* Adjust alignment as needed */
+}
+
+#modelInfoTableContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* margin-top: -1%;  */
+    margin-right: 15; 
+    border-radius: 4px;
+    box-shadow: 0 0 40px 0 rgba(0,0,0,.15);
+    position: relative;
+    overflow-y: auto;
+    background-color: #222;
+    max-height: 780px;
+    max-width: 1500px;
+    
+}
+
+#modelInfoTable {
+    border-collapse: collapse;
+    overflow: auto;
+}
+
+#modelInfoTable th {
+    position: sticky;
+    top: 0;
+    font-family: Lato-Bold;
+    font-size: 17px;
+    color: #00ad5f;
+    background-color: #393939; 
+    border: 2px solid black;
+    padding: 8px;
+    text-align: center;
+}
+
+#modelInfoTable td {
+    font-family: Lato-Regular;
+    font-size: 17px;
+    line-height: 1;
+    border: 2px solid black;
+    padding: 8px;
+    text-align: left;
+    max-height: 100px;
+    max-width: 300px;
+    word-wrap: break-word;
+}
+
+/* Specific style for anchor tags inside table cells */
+#modelInfoTable td a {
+    color: inherit;  /* Inherit the text color from the td */
+    text-decoration: underline; /* Add underline to links */
+    font-family: inherit; /* Inherit the font from td */
+    font-size: inherit;  /* Inherit the font size from td */
+    background-color: #222;
+}
+
+#modelInfoTable tr:nth-child(even) td {
+    background-color: #222;;
+    color: gray;
+}
+
+#modelInfoTable tr:nth-child(odd) td {
+    background-color: #222;;
+    color: gray;
+}
+
+/* #deploymodelContainer {
+    background: none;
+    margin-top: -50px;
+    margin-left: 100px;
+    width: 1200px;
+    height: 600px;
+    border: none;
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+}
+
+#deploymodelContainer iframe {
+    width: 100%; 
+    height: 100%; 
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+} */
+
+
+#deploymodelContainer {
+    /* margin-top: -1%; */
+    width: 100%;
+    height: 600px; 
+    position: relative;
+
+}
+
+#deploymodelContainer iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    position: absolute;
+    overflow: hidden;
+
+}
+
+/* #chatbotContainer {
+    background: none;
+    margin-top: -50px;
+    margin-left: 100px;
+    width: 1200px;
+    height: 600px;
+    border: none;
+    position: relative;
+    z-index: 0;
+    overflow: hidden; 
+}
+
+#chatbotContainer iframe {
+    width: 100%; 
+    height: 100%; 
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+} */
+
+#chatbotContainer {
+    /* margin-top: -10%; */
+    width: 100%;
+    height: 600px; 
+    position: relative;
+
+}
+
+#chatbotContainer iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    position: absolute;
+    overflow: hidden;
+
+}

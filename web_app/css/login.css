@@ -1,0 +1,84 @@
+body {
+    margin: 0; /* Remove default margin */
+    width: 100vw; /* 100% of the viewport width */
+    height: 100vh; /* 100% of the viewport height */
+    background-image: url('/images/ai.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center; /* Center the background image */
+}
+
+.sisense-img {
+    width: 350px;  /* Set the width */
+    height: 90px;  /* Set the height */
+    object-fit: contain; 
+    margin-top: -30px;
+}
+
+
+
+.app {
+    display: flex;
+    flex-direction: row;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    width: 1000%;
+    justify-content: center; 
+    align-self: flex-start;
+    align-items: center;
+    padding: 20px;
+}
+
+.login {
+    display: inline-block;
+    justify-content: center; 
+    align-self: center;
+    align-items: center;
+    width: 300px;
+    padding: 20px;
+    margin-top: 100px;
+    /* border: 1px solid #ccc; */
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    color: white;
+    padding: 10px;
+    border-radius: 15px;
+    border: 3px solid white;
+}
+
+.login label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.login input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.login button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.login button:hover {
+    background-color: #45a049;
+}
+
+.header img {
+    margin-right: 10px;
+    height: 150px;
+    
+}
+
+
+
