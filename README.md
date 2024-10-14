@@ -9,7 +9,7 @@
 AutoML Fusion is a Node.js app that leverages Sisense APIs and AWS SageMaker Autopilot for automated machine learning (AutoML). The app allows users to select datasets from Sisense, train machine learning models via Auto-Sklearn or SageMaker Autopilot, and seamlessly deploy these models. The app also integrates dynamic Sisense dashboards for real-time predictions and insights.
 
 **Purpose**:  
-The primary goal of AutoML Fusion is to simplify the machine learning process by integrating Sisense's powerful intigration capabilities with automated machine learning frameworks. Users can easily select datasets, train models without needing to write code, and view predictions directly in Sisense dashboards. This project helps bridge the gap between business intelligence and machine learning, enabling organizations to make data-driven decisions with minimal technical overhead.
+The primary goal of AutoML Fusion is to simplify the machine learning process by integrating Sisense's powerful integration capabilities with automated machine learning frameworks. Users can easily select datasets, train models without needing to write code, and view predictions directly in Sisense dashboards. This project helps bridge the gap between business intelligence and machine learning, enabling organizations to make data-driven decisions with minimal technical overhead.
 
 ## 2. Features
 
