@@ -86,23 +86,59 @@ The primary goal of AutoML Fusion is to simplify the machine learning process by
 
 ### How to Use
 
-- **Login**: Navigate to `http://localhost:3000/templates/login.html`, enter your Sisense credentials, and generate the API token.
-- **Dataset Selection**: Select the dataset you want to train the machine learning model on.
-- **Target Variable Selection**: Choose the target variable and select either a regression or classification problem.
-- **Model Training**: Train your model using **Auto-Sklearn** or **AWS SageMaker Autopilot**.
-- **Predictions**: Make predictions by entering new data into Sisense dashboards. 
+- **Login**:
+    -  Navigate to `http://localhost:3000/templates/login.html`, enter your Sisense credentials, and hit Login.
+    -  After login, the app automatically redirects you to `http://localhost:3000/templates/addData.html` and generates the API token in the background, saving it internally.
+- **Dataset Selection**:
+   - On the **Add Data** page, select the radio button for **Add Data**.
+   - The app makes a GET request to Sisense using the generated API token and fetches available data models for selection.
+- **Target Variable Selection**:
+   - After selecting a dataset, choose the target variable (the column you want to predict), and specify whether the problem is a regression or classification task.
+
+- **Model Training**:
+   - Choose whether to train your model using **Auto-Sklearn** (for local training) or **AWS SageMaker Autopilot** (for cloud-based training).
+
+- **Predictions**:
+   - Once the model is trained and deployed, you can use the Sisense dashboard for batch or real-time predictions by entering new data.
 
 ### Example
 
+![Screenshot 2024-10-14 at 6 03 55 PM](https://github.com/user-attachments/assets/63e21508-469f-4123-bf2e-d18b4bc1b7ce)
+
+![Screenshot 2024-10-14 at 6 03 28 PM](https://github.com/user-attachments/assets/edf1de89-c295-4077-865b-30ab3ae2a69b)
+
+![Screenshot 2024-10-14 at 6 05 54 PM](https://github.com/user-attachments/assets/30d50fa1-f1a3-4094-a1be-1fee6a127a7b)
+
+![Screenshot 2024-10-14 at 6 06 04 PM](https://github.com/user-attachments/assets/8b41f7c8-2010-4755-bf16-1b95a2bddf86)
+
+![Screenshot 2024-10-14 at 6 54 46 PM](https://github.com/user-attachments/assets/fc6ba65b-211a-48aa-9247-5ba44336ef1e)
+
+![Screenshot 2024-10-14 at 6 06 21 PM](https://github.com/user-attachments/assets/fc02a02a-7a0f-4674-a74e-69823f67edfd)
+
 - **Input**: Dataset with customer attributes, where the target variable is whether the customer churned (e.g., `Exited`).
-- **Output**: The model returns either "Churn" (1) or "No Churn" (0).
+- **Output**: The model returns either "Churned" or "Retained" .
+  
+![Screenshot 2024-10-14 at 6 07 58 PM](https://github.com/user-attachments/assets/41ea7af9-c4c1-42ce-801c-426e03527f96)
+
 
 ## 5. APIs and Dependencies
 
 ### Key APIs:
 
 - **Sisense APIs**:
-    - Authentication API, Data Model API, Dataset API, Custom Code Table API, Dashboard API, Widget API, Blox Action API, Custom Code Transformation API, Elasticube API.
+    - Authentication API: Generates tokens using user-provided credentials (URL, username, password).
+    - Data Model API (/api/v2/datamodels/schema): Retrieves available data models from Sisense.
+    - Dataset API (/api/v2/datamodels/{dataModel}/schema/datasets): Fetches datasets within the selected data model.
+    - Elasticube API (/api/v2/ecm/): For adding Custom Code Table to Elasticubes/DataModel that run custom code (e.g., Jupyter notebooks) for data processing and model training.
+    - Elasticube API (/api/v2/ecm/): Builds and manages Elasticubes/DataModel based on the selected DataModels.
+    - Dashboard API: Manages dashboard creation.
+    - Widget API: Dynamically generates blox widgets for user input and prediction results in real-time.
+    - Blox Action API: Handles triggers for specific actions within Sisense blox widget.
+    - JAQL API: Blox action calls the jaql api that takes input feature values and sends them to a custom code transformation notebook. In the notebook:
+      - For Auto-Sklearn, it loads the pre-trained model to make a prediction.
+      - For AWS SageMaker, it calls the SageMaker endpoint to make a prediction.
+      - The resulting prediction is sent back as a response to the API.
+      
 - **AWS SageMaker APIs**:
     - S3 API and Autopilot API (`create_auto_ml_job_v2`).
 - **Flask API**:
