@@ -61,8 +61,8 @@ The primary goal of AutoML Fusion is to simplify the machine learning process by
     To upload the required custom code notebooks:  
     1. Go to **File Management** in Sisense.  
     2. Navigate to `notebooks/custom_code_notebooks/notebooks`.  
-    3. Upload each individual folder from [this repository](https://github.com/hnegi01/AutoML-Fusion/tree/main/customcode_notebooks/training/sagemaker).  
-    4. For example, to upload `newNotebook17`:  
+    3. Upload each individual folder from [here](https://github.com/hnegi01/AutoML-Fusion/tree/main/customcode_notebooks).  
+    4. For example, to upload `newNotebook17` from [here](https://github.com/hnegi01/AutoML-Fusion/tree/main/customcode_notebooks/training/sagemaker):  
        - Inside **File Management**, navigate to the `notebooks/custom_code_notebooks/notebooks` path.  
        - Click **New Folder**, name it `newNotebook17`, and upload all files from the `newNotebook17` folder into this newly created folder.  
 
