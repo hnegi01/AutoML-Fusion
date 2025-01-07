@@ -1,0 +1,33 @@
+{
+    "id": "newNotebook30",
+    "displayName": "sagemaker_endpoint",
+    "codePath": "/work/storage_notebooks/custom_code_notebooks/notebooks/newNotebook30/newNotebook30.ipynb",
+    "description": "",
+    "group": "",
+    "icon": "",
+    "cellsDisable": [
+        0
+    ],
+    "additionalParameters": [
+        {
+            "description": "",
+            "name": "input",
+            "send": true,
+            "title": "input",
+            "type": "text"
+        }
+    ],
+    "columns": [
+        {
+            "name": "example",
+            "id": "example",
+            "type": 2
+        }
+    ],
+    "isActive": true,
+    "isSystem": true,
+    "language": "Python",
+    "mode": "Full",
+    "serverUrl": "customcode:8888",
+    "timeout": 0
+}
