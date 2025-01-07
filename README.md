@@ -43,13 +43,19 @@ The primary goal of AutoML Fusion is to simplify the machine learning process by
 
 ### Prerequisites
 
-- **Node.js** (version 14.x or higher)
-- **npm** (Node Package Manager)
-- **Sisense URL, Username, and Password** for generating API tokens.
-- **AWS Credentials**:
-    - `aws_access_key`: Contains your AWS Access Key ID.
-    - `aws_secret_access_key`: Contains your AWS Secret Access Key.
-    - These files must be saved in Sisense’s file system storage within a specified directory.
+- **Node.js** (version 14.x or higher)  
+- **npm** (Node Package Manager)  
+- **Sisense URL, Username, and Password** for generating API tokens.  
+- **AWS Credentials**:  
+    - `aws_access_key`: Contains your AWS Access Key ID.  
+    - `aws_secret_access_key`: Contains your AWS Secret Access Key.  
+    - These files must be saved in Sisense’s file system storage within a specified directory:
+      1. Go to **File Management** in Sisense.  
+      2. Navigate to `notebooks/custom_code_notebooks/notebooks`.  
+      3. Click **New Folder** and name it `aws`.  
+      4. Inside the `aws` folder:
+         - Click **New File**, name it `aws_access_key`, and paste your **AWS Access Key ID** in the editor.  
+         - Click **New File**, name it `aws_secret_access_key`, and paste your **AWS Secret Access Key** in the editor.  
 - **Custom Code Notebooks**: Import into Sisense beforehand.
 
 ### Installation Steps
