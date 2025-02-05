@@ -111,7 +111,8 @@ nohup python main.py > flask.log 2>&1 &
 
 ### **6. Update `config.json` file**
 - Navigate to `/frontend/web_app`
-- Update the `FLASK_API_URL` with your public IP or domain where the web app is running.
+- Update the `FLASK_API_URL` with your public IP or domain where the flask app will be hosted.
+- Update the `SERVER_IP` with your public IP or domain where the web app will be hosted.
 
 ### **7. Install Dependencies for Node.js App**
 ```bash
