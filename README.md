@@ -43,6 +43,8 @@ The primary goal of AutoML Fusion is to simplify the machine learning process by
 
 ### Prerequisites
 
+- Sisense Linux Deployment
+- Linux Server for Web and Flask App
 - **Node.js** (version 14.x or higher)  
 - **npm** (Node Package Manager)  
 - **Sisense URL, Username, and Password** for generating API tokens.  
@@ -54,27 +56,53 @@ The primary goal of AutoML Fusion is to simplify the machine learning process by
 
 ### AutoML-Fusion Deployment Guide
 
-### **1. Create a Linux VM**
+### **1. AWS Credentials Setup**
+- Log in to Sisense App.
+- Create `aws_access_key` and `aws_secret_access_key` files and save them in the Sisense file system directory.
+      1. Go to **File Management** in Sisense.  
+      2. Navigate to `notebooks/custom_code_notebooks/notebooks`.  
+      3. Click **New Folder** and name it `aws`.  
+      4. Inside the `aws` folder:
+         - Click **New File**, name it `aws_access_key`, and paste your **AWS Access Key ID** in the editor.  
+         - Click **New File**, name it `aws_secret_access_key`, and paste your **AWS Secret Access Key** in the editor.  
+
+### **2. Custom Code Notebook Setup**
+- To upload the required custom code notebooks:  
+    1. Go to **File Management** in Sisense.  
+    2. Navigate to `notebooks/custom_code_notebooks/notebooks`.  
+    3. Upload each individual folder from [here](https://github.com/hnegi01/AutoML-Fusion/tree/main/customcode_notebooks).  
+    4. For example, to upload `newNotebook17` from [here](https://github.com/hnegi01/AutoML-Fusion/tree/main/customcode_notebooks/training/sagemaker):  
+       - Inside **File Management**, navigate to the `notebooks/custom_code_notebooks/notebooks` path.  
+       - Click **New Folder**, name it `newNotebook17`, and upload all files from the `newNotebook17` folder into this newly created folder.  
+
+    Repeat the above steps for each required notebook folder from the repository, ensuring the structure matches exactly.
+- Ensure the custom code notebooks are uploaded to the Sisense environment and verify the AWS key directory path.
+
+### **3. Create a Linux VM**
 Ensure you have a Linux server ready.
 
-### **2. Install Node.js and npm**
+### **4. Install Node.js and npm**
 ```bash
 curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt install -y nodejs
 ```
 
-### **3. Install Python and Flask**
+### **5. Install Python and Flask**
 ```bash
 sudo apt install python3 python3-flask
 ```
 
-### **4. Clone the Repository**
+### **6. Clone the Repository**
 ```bash
 git clone https://github.com/hnegi01/AutoML-Fusion.git
 cd AutoML-Fusion
 ```
+### **7. Update `config.json` file**
+- Navigate to `/frontend/web_app`
+- Update the `FLASK_API_URL` with your public IP or domain where the flask app will be hosted.
+- Update the `SERVER_IP` with your public IP or domain where the web app will be hosted.
 
-### **5. Run Flask App**
+### **8. Run Flask App**
 ```bash
 cd flask_backend/
 # Install Python Virtual Environment
@@ -93,51 +121,19 @@ pip install -r requirements.txt
 nohup python main.py > flask.log 2>&1 &
 ```
 
-### **6. Update `config.json` file**
-- Navigate to `/frontend/web_app`
-- Update the `FLASK_API_URL` with your public IP or domain where the flask app will be hosted.
-- Update the `SERVER_IP` with your public IP or domain where the web app will be hosted.
-
-### **7. Install Dependencies for Node.js App**
+### **9. Install Dependencies for Node.js App**
 ```bash
 cd frontend/
 npm install
 ```
 
-### **8. Start the Web App**
-```bash
-nohup node server.js > server.log 2>&1 &
-```
-
-### **9. AWS Credentials Setup**
-- Log in to Sisense App or server.
-- Create `aws_access_key` and `aws_secret_access_key` files and save them in the Sisense file system directory.
-      1. Go to **File Management** in Sisense.  
-      2. Navigate to `notebooks/custom_code_notebooks/notebooks`.  
-      3. Click **New Folder** and name it `aws`.  
-      4. Inside the `aws` folder:
-         - Click **New File**, name it `aws_access_key`, and paste your **AWS Access Key ID** in the editor.  
-         - Click **New File**, name it `aws_secret_access_key`, and paste your **AWS Secret Access Key** in the editor.  
-
-### **10. Custom Code Notebook Setup**
-- To upload the required custom code notebooks:  
-    1. Go to **File Management** in Sisense.  
-    2. Navigate to `notebooks/custom_code_notebooks/notebooks`.  
-    3. Upload each individual folder from [here](https://github.com/hnegi01/AutoML-Fusion/tree/main/customcode_notebooks).  
-    4. For example, to upload `newNotebook17` from [here](https://github.com/hnegi01/AutoML-Fusion/tree/main/customcode_notebooks/training/sagemaker):  
-       - Inside **File Management**, navigate to the `notebooks/custom_code_notebooks/notebooks` path.  
-       - Click **New Folder**, name it `newNotebook17`, and upload all files from the `newNotebook17` folder into this newly created folder.  
-
-    Repeat the above steps for each required notebook folder from the repository, ensuring the structure matches exactly.
-- Ensure the custom code notebooks are uploaded to the Sisense environment and verify the AWS key directory path.
-
-### **11. Run the Application**
+### **10. Run the Application**
 ```bash
 npm start
 ```
 The app will run on `http://<your_ip_or_domain>:3000`.
 
-### **12. Access the Web App**
+### **11. Access the Web App**
 - Open a browser and navigate to:
   ```
   http://<your_ip_or_domain>:3000/templates/login.html
@@ -149,18 +145,23 @@ The app will run on `http://<your_ip_or_domain>:3000`.
 
 - **Login**:
     -  Navigate to `http://<your_ip_or_domain>:3000/templates/login.html`, enter your Sisense credentials, and hit Login.
-    -  After login, the app automatically redirects you to `http://<your_ip_or_domain>:3000/templates/addData.html` and generates the API token in the background, saving it internally.
+    -  After login, the app automatically redirects you to `http://<your_ip_or_domain>:3000/templates/addData.html`.
+
 - **Dataset Selection**:
-   - On the **Add Data** page, select the radio button for **Add Data**.
-   - The app makes a GET request to Sisense using the generated API token and fetches available data models for selection.
+   - On the **AddData** page, select the radio button for **Add Data**.
+   - The app makes a request to Sisense and fetches available data models for selection.
+
 - **Target Variable Selection**:
-   - After selecting a dataset, choose the target variable (the column you want to predict), and specify whether the problem is a regression or classification task.
+   - After selecting a dataset, choose the target variable (the column you want to predict), specify whether the problem is a regression or classification task and finally SUBMIT.
+ 
+- **Exploratory Data Analysis EDA**
+   - The app sends a subset of the selected dataset to a Flask API, which generates an EDA report using ydata-profiling.
 
 - **Model Training**:
-   - Choose whether to train your model using **Auto-Sklearn** (for local training) or **AWS SageMaker Autopilot** (for cloud-based training).
+   - Click on Model Training and choose whether to train your model using **Auto-Sklearn** (for local training) or **AWS SageMaker Autopilot** (for cloud-based training).
 
-- **Predictions**:
-   - Once the model is trained and deployed, you can use the Sisense dashboard for batch or real-time predictions by entering new data.
+- **Inference**:
+   - Once the model is trained and deployed, click Download Model to view a table containing details of all trained models along with a dashboard info ready for inference. For predictions, click on the widget ID, which will open the Blox widget.           Enter new feature data, click Predict, and the app will display the predicted value.
 
 ### Example
 
@@ -225,6 +226,7 @@ The app will run on `http://<your_ip_or_domain>:3000`.
 No special configuration is required in the app. AWS credentials are stored externally within Sisense’s file system, not within the app itself.
 
 - **Environment Variables**: None needed.
+- **Public IP or Domain**: In config.json file
 - **Where to Configure**: AWS credentials are stored in Sisense file storage, and the path is provided during custom code setup.
 
 ## 7. Running the App
@@ -242,7 +244,7 @@ The server starts on port 3000 (or the specified port).
 
 Navigate to:
 ```bash
-http://localhost:3000/templates/login.html
+http://<your_ip_or_domain>:3000/templates/login.html
 ```
 
 From there, you can log in with your Sisense credentials.
