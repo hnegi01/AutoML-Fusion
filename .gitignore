@@ -1,0 +1,42 @@
+# Node.js dependencies
+frontend/node_modules/
+
+# Flask virtual environment
+backend/automl/
+
+# Python cache & compiled files
+backend/__pycache__/
+*.pyc
+*.pyo
+
+# Logs and runtime files
+nohup.out
+*.log
+logs/
+backend/logs/
+frontend/logs/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# VS Code workspace settings
+.vscode/
+
+# Environment variables
+.env
+backend/.env
+frontend/.env
+
+# Build and deployment artifacts
+frontend/dist/
+frontend/build/
+backend/migrations/
+
+# Jupyter notebooks
+*.ipynb_checkpoints/
+
+# OS-specific files
+*.swp  
+*.swo
+
