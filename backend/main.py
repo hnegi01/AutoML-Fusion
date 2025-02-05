@@ -8,10 +8,7 @@ from datetime import datetime
 import sys
 import os
 
-# Add the project root to the Python path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-# from scikit_learn.scikit_learn_local import create_model
-
 
 app = Flask(__name__)
 CORS(app, resources={r"/run_eda": {"origins": "*"}})
@@ -31,7 +28,6 @@ def create_eda(columns, row):
                                     "phi_k": {"calculate": True},
                                     "cramers": {"calculate": True},
                                 })
-        # profile.to_file('/Users/himanshunegi_1/Desktop/Sisense/front_end/web_app/python/eda3.html')
         html_content = profile.to_html()
 
 
