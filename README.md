@@ -6,7 +6,7 @@
 **Project Name**: AutoML Fusion
 
 **Description**:  
-AutoML Fusion is a Node.js app that leverages Sisense APIs and AWS SageMaker Autopilot for automated machine learning (AutoML). The app allows users to select datasets from Sisense, train machine learning models via Auto-Sklearn or SageMaker Autopilot, and seamlessly deploy these models. The app also integrates dynamic Sisense dashboards for real-time predictions and insights.
+AutoML Fusion is a Node.js app that leverages Sisense APIs and various AutoML providers to automate machine learning model training and deployment. The app allows users to select datasets from Sisense, train machine learning models via Auto-Sklearn or SageMaker Autopilot etc, and seamlessly deploy these models. The app also integrates dynamic Sisense dashboards for real-time predictions and insights.
 
 **Purpose**:  
 The primary goal of AutoML Fusion is to simplify the machine learning process by integrating Sisense's powerful integration capabilities with automated machine learning frameworks. Users can easily select datasets, train models without needing to write code, and view predictions directly in Sisense dashboards. This project helps bridge the gap between business intelligence and machine learning, enabling organizations to make data-driven decisions with minimal technical overhead.
@@ -50,23 +50,7 @@ The primary goal of AutoML Fusion is to simplify the machine learning process by
     - `aws_access_key`: Contains your AWS Access Key ID.  
     - `aws_secret_access_key`: Contains your AWS Secret Access Key.  
     - These files must be saved in Sisense’s file system storage within a specified directory:
-      1. Go to **File Management** in Sisense.  
-      2. Navigate to `notebooks/custom_code_notebooks/notebooks`.  
-      3. Click **New Folder** and name it `aws`.  
-      4. Inside the `aws` folder:
-         - Click **New File**, name it `aws_access_key`, and paste your **AWS Access Key ID** in the editor.  
-         - Click **New File**, name it `aws_secret_access_key`, and paste your **AWS Secret Access Key** in the editor.  
-
 - **Custom Code Notebooks**:  
-    To upload the required custom code notebooks:  
-    1. Go to **File Management** in Sisense.  
-    2. Navigate to `notebooks/custom_code_notebooks/notebooks`.  
-    3. Upload each individual folder from [here](https://github.com/hnegi01/AutoML-Fusion/tree/main/customcode_notebooks).  
-    4. For example, to upload `newNotebook17` from [here](https://github.com/hnegi01/AutoML-Fusion/tree/main/customcode_notebooks/training/sagemaker):  
-       - Inside **File Management**, navigate to the `notebooks/custom_code_notebooks/notebooks` path.  
-       - Click **New Folder**, name it `newNotebook17`, and upload all files from the `newNotebook17` folder into this newly created folder.  
-
-    Repeat the above steps for each required notebook folder from the repository, ensuring the structure matches exactly.
 
 ### AutoML-Fusion Deployment Guide
 
@@ -128,10 +112,24 @@ nohup node server.js > server.log 2>&1 &
 ### **9. AWS Credentials Setup**
 - Log in to Sisense App or server.
 - Create `aws_access_key` and `aws_secret_access_key` files and save them in the Sisense file system directory.
-- During the custom code notebook setup in Sisense, provide the path to the AWS key directory.
+      1. Go to **File Management** in Sisense.  
+      2. Navigate to `notebooks/custom_code_notebooks/notebooks`.  
+      3. Click **New Folder** and name it `aws`.  
+      4. Inside the `aws` folder:
+         - Click **New File**, name it `aws_access_key`, and paste your **AWS Access Key ID** in the editor.  
+         - Click **New File**, name it `aws_secret_access_key`, and paste your **AWS Secret Access Key** in the editor.  
 
 ### **10. Custom Code Notebook Setup**
-- Ensure the custom code notebooks are uploaded to the Sisense environment and provide the AWS key directory path.
+- To upload the required custom code notebooks:  
+    1. Go to **File Management** in Sisense.  
+    2. Navigate to `notebooks/custom_code_notebooks/notebooks`.  
+    3. Upload each individual folder from [here](https://github.com/hnegi01/AutoML-Fusion/tree/main/customcode_notebooks).  
+    4. For example, to upload `newNotebook17` from [here](https://github.com/hnegi01/AutoML-Fusion/tree/main/customcode_notebooks/training/sagemaker):  
+       - Inside **File Management**, navigate to the `notebooks/custom_code_notebooks/notebooks` path.  
+       - Click **New Folder**, name it `newNotebook17`, and upload all files from the `newNotebook17` folder into this newly created folder.  
+
+    Repeat the above steps for each required notebook folder from the repository, ensuring the structure matches exactly.
+- Ensure the custom code notebooks are uploaded to the Sisense environment and verify the AWS key directory path.
 
 ### **11. Run the Application**
 ```bash
