@@ -143,14 +143,14 @@ The app will run on `http://<your_ip_or_domain>:3000`.
   ```
   http://<your_ip_or_domain>:3000/templates/login.html
   ```
-- Enter your **Sisense URL**, **username**, and **password** to generate the API token.
+
 ## 4. Usage
 
 ### How to Use
 
 - **Login**:
-    -  Navigate to `http://localhost:3000/templates/login.html`, enter your Sisense credentials, and hit Login.
-    -  After login, the app automatically redirects you to `http://localhost:3000/templates/addData.html` and generates the API token in the background, saving it internally.
+    -  Navigate to `http://<your_ip_or_domain>:3000/templates/login.html`, enter your Sisense credentials, and hit Login.
+    -  After login, the app automatically redirects you to `http://<your_ip_or_domain>:3000/templates/addData.html` and generates the API token in the background, saving it internally.
 - **Dataset Selection**:
    - On the **Add Data** page, select the radio button for **Add Data**.
    - The app makes a GET request to Sisense using the generated API token and fetches available data models for selection.
