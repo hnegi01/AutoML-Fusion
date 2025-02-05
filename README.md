@@ -68,6 +68,7 @@ The primary goal of AutoML Fusion is to simplify the machine learning process by
 
     Repeat the above steps for each required notebook folder from the repository, ensuring the structure matches exactly.
 
+### AutoML-Fusion Deployment Guide
 
 ### **1. Create a Linux VM**
 Ensure you have a Linux server ready.
