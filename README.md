@@ -89,7 +89,7 @@ sudo apt install -y nodejs
 
 ### **5. Install Python and Flask**
 ```bash
-sudo apt install python3 python3-flask
+sudo apt install python3 python3-pip python3.12-venv -y
 ```
 
 ### **6. Clone the Repository**
@@ -104,15 +104,13 @@ cd AutoML-Fusion
 
 ### **8. Run Flask App**
 ```bash
-cd flask_backend/
-# Install Python Virtual Environment
-sudo apt install python3.12-venv
+cd backend/
 
 # Create virtual environment
 python3 -m venv automl
-cd automl/
+
+# Activate Virtual Environment
 source automl/bin/activate
-cd ..
 
 # Install Dependencies
 pip install -r requirements.txt
