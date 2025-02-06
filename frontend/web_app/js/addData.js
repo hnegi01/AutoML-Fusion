@@ -131,15 +131,15 @@ async function getFlaskUrl() {
         if (!response.ok) throw new Error('Failed to load config.json');
 
         const config = await response.json();
-        return config.FLASK_API_URL; // Extract Flask URL from config
+        return config.FLASK_API_URL; 
     } catch (error) {
         console.error('Error fetching Flask URL:', error);
-        return null; // Handle the error properly
+        return null; 
     }
 }
 
 async function callFlaskApp(columns, rows) {
-    const flaskurl = await getFlaskUrl(); // Fetch Flask URL dynamically
+    const flaskurl = await getFlaskUrl(); 
 
     if (!flaskurl) {
         console.error("Flask URL not found. Check config.json.");
@@ -244,18 +244,11 @@ export async function addData() {
                             schemaContainer.innerHTML = '';
                             columnContainer.innerHTML = '';
                             buttonContainer.innerHTML = '';
-                            // alert('Your inputs are saved. You can now proceed to EDA (Exploratory Data Analysis).');
 
-                            // const edaRadioButton = document.querySelector('input[name="filter"][value="EDA"]');
-                            // if (edaRadioButton) edaRadioButton.checked = true;
 
                             showLoadingIndicator();
-                                // Show the EDA container after submitting
                             const edaContainer = document.getElementById('edaContainer');
-                            edaContainer.style.display = 'block';  // Change display from 'none' to 'block'
-
-
-                            // Select the EDA radio button programmatically
+                            edaContainer.style.display = 'block'; 
                             const edaRadioButton = document.querySelector('input[name="filter"][value="EDA"]');
                             if (edaRadioButton) {
                                 edaRadioButton.checked = true;
@@ -413,15 +406,14 @@ async function periodicStatusCheck(apiUrl, headers, selectedDataModelId) {
     let attempt = 0;
 
 
-    while (true) { // Infinite loop, controlled by cancel
+    while (true) { 
         attempt++;
         console.log(`Periodic check attempt: ${attempt}`);
 
         if (cancel) {
-            // If cancel is true, hide the status message and spinner
             document.getElementById('statusMessage').innerHTML = '';
             document.getElementById('spinnerContainer').style.display = 'none';
-            break; // Exit the loop
+            break;
         }
 
         try {
@@ -431,7 +423,7 @@ async function periodicStatusCheck(apiUrl, headers, selectedDataModelId) {
             if (running) {
                 document.getElementById('statusMessage').innerHTML = 'Model training is completed! Ready to deploy.';
                 document.getElementById('spinnerContainer').style.display = 'none';
-                break; // Exit the loop if model training is completed
+                break;
             } else {
                 document.getElementById('statusMessage').innerHTML = message;
                 document.getElementById('spinnerContainer').style.display = running ? 'none' : 'block';
@@ -450,10 +442,7 @@ async function periodicStatusCheck(apiUrl, headers, selectedDataModelId) {
 
 const scikitLearnClick = async (event) => {
 
-    // Clear existing content if needed
     document.getElementById('providerContainer').innerHTML = '';
-
-    // Display initial status message and show the spinner
     document.getElementById('statusMessage').innerHTML = 'Model is in the oven, baking some intelligence! Time for a snack?';
     document.getElementById('spinnerContainer').style.display = 'block';
 
@@ -546,7 +535,6 @@ const scikitLearnClick = async (event) => {
     const customCodeApiEndpoint = `${protocol}://${apiUrl}/api/v2/ecm/`;
 
     try {
-        // Send request to add custom code table
         const response = await fetch(customCodeApiEndpoint, {
             method: 'POST',
             headers: headers,
@@ -558,7 +546,6 @@ const scikitLearnClick = async (event) => {
             throw new Error('Failed to add custom code table');
         }
 
-        // Success handling for adding custom code table
         const buildGraphql = JSON.stringify({
             query: "mutation buildElasticube($elasticubeOid: UUID!, $buildType: ElasticubeBuildType, $buildRows: Int) {\n  buildElasticube(\n    elasticubeOid: $elasticubeOid\n    type: $buildType\n    rows: $buildRows\n  )\n}\n",
             variables: { "elasticubeOid": selectedDataModelId, "buildType": "changes" }
@@ -566,7 +553,6 @@ const scikitLearnClick = async (event) => {
 
         const buildAPIEndpoint = `${protocol}://${apiUrl}/api/v2/ecm/`;
 
-        // Send request to build elasticube
         const buildResponse = await fetch(buildAPIEndpoint, {
             method: 'POST',
             headers: headers,
@@ -578,11 +564,9 @@ const scikitLearnClick = async (event) => {
             throw new Error('Failed to start model training');
         }
 
-        // Success handling for build elasticube
         const buildResult = await buildResponse.json();
         console.log(buildResult);
 
-        // Start periodic status check
         await periodicStatusCheck(apiUrl, headers, selectedDataModelId);
         
     } catch (error) {
@@ -592,53 +576,14 @@ const scikitLearnClick = async (event) => {
     }
 };
 
-// Add event listener
 const scikitLearnImage = document.getElementById('scikit_learn');
 if (scikitLearnImage) {
     scikitLearnImage.addEventListener('click', scikitLearnClick);
 }
 
-/////// SageMaker
-
-// let awsAccessKeyId;
-// let awsSecretAccessKey;
-// let regionName;
-// let s3BucketName;
-// let awsArnRole;
-
-// // Fetch AWS config data from the server-side
-// const fetchConfig = async () => {
-//     const response = await fetch('/config/aws_config.json');
-//     if (response.ok) {
-//         return await response.json();
-//     } else {
-//         console.error('Failed to load AWS configuration');
-//     }
-// };
-
-// // Wait for the DOM to be loaded before executing
-// document.addEventListener('DOMContentLoaded', async () => {
-//     const config = await fetchConfig();
-//     if (config) {
-//         // Assign values to the variables
-//         awsAccessKeyId = config.aws_access_key_id;
-//         awsSecretAccessKey = config.aws_secret_access_key;
-//         regionName = config.region_name;
-//         s3BucketName = config.S3_bucket_name;
-//         awsArnRole = config.aws_arn_role;
-
-
-//     }
-// });
-
-
 const amazonClick = async (event) => {
 
-
-    // Clear existing content if needed
     document.getElementById('providerContainer').innerHTML = '';
-
-    // Display initial status message and show the spinner
     document.getElementById('statusMessage').innerHTML = 'Model is in the oven, baking some intelligence! Time for a snack?';
     document.getElementById('spinnerContainer').style.display = 'block';
 
@@ -826,7 +771,6 @@ async function downloadModel() {
 
     const ml_data = await fetchModelsInfo(apiUrl, headers);
 
-    // Sample CSV string
     const csvString = ml_data.content;
 
     // Function to parse the CSV string into an array of objects
@@ -853,14 +797,14 @@ async function downloadModel() {
 
         const headers = Object.keys(data[0]);
         const table = document.createElement('table');
-        table.id = 'modelInfoTable'; // Set the id for the table
+        table.id = 'modelInfoTable'; 
 
         // Generate the table header
         const thead = table.createTHead();
         const headerRow = thead.insertRow();
         headers.forEach(header => {
             const th = document.createElement('th');
-            th.textContent = header.toUpperCase(); // Capitalize the header text
+            th.textContent = header.toUpperCase(); 
             headerRow.appendChild(th);
         });
 
@@ -875,11 +819,11 @@ async function downloadModel() {
                     link.href = row[header].replace('/opt/sisense/storage', `${protocol}://${apiUrl}/app/explore/files`);
                     const displayPath = row[header].replace('/opt/sisense/storage/notebooks/custom_code_notebooks/notebooks/', '');
                     link.textContent = displayPath;
-                    link.target = '_blank'; // Open the link in a new tab
+                    link.target = '_blank'; 
                     cell.appendChild(link);
                 } else if (header === 'widget_id') {
                     const link = document.createElement('a');
-                    link.href = '#'; // Set to '#' or any URL if necessary
+                    link.href = '#'; 
                     link.textContent = row[header];
                     link.style.textDecoration = 'underline';
                     link.style.cursor = 'pointer';
@@ -887,8 +831,8 @@ async function downloadModel() {
                         event.preventDefault();
                         console.log('widget_id:', row['widget_id']);
                         console.log('dash_id:', row['dash_id']);
-                        document.querySelector('input[name="filter"][value="Deploy Model"]').checked = true; // Select the "Deploy Model" radio button
-                        await deployModel(row['dash_id'], row['widget_id']); // Call the deployModel function with parameters
+                        document.querySelector('input[name="filter"][value="Deploy Model"]').checked = true; 
+                        await deployModel(row['dash_id'], row['widget_id']); 
                     });
                     cell.appendChild(link);
                 } else {
@@ -909,84 +853,6 @@ async function downloadModel() {
     tableContainer.appendChild(table);
 }
 
-
-
-
-/// Deploy Model by generating input fields
-// async function deployModel() {
-//     const dataModelTableContainer = document.getElementById('dataModelTableContainer');
-//     const schemaContainer = document.getElementById('schemaContainer');
-//     const columnContainer = document.getElementById('columnContainer');
-//     const buttonContainer = document.getElementById('buttonContainer');
-//     const edaContainer = document.getElementById('edaContainer');
-//     const statusMessage = document.getElementById('statusMessage');
-//     const spinnerContainer = document.getElementById('spinnerContainer');
-//     const providerContainer = document.getElementById('providerContainer');
-//     const modelInfoTableContainer = document.getElementById('modelInfoTableContainer');
-//     const deploymodelContainer = document.getElementById('deploymodelContainer');
-
-//     dataModelTableContainer.innerHTML = '';
-//     schemaContainer.innerHTML = '';
-//     columnContainer.innerHTML = '';
-//     buttonContainer.innerHTML = '';
-//     edaContainer.innerHTML = '';
-//     statusMessage.innerHTML = '';
-//     spinnerContainer.style.display = 'none';
-//     providerContainer.style.display = 'none';
-//     modelInfoTableContainer.innerHTML = ''
-
-//     // Display the deploymodelContainer
-//     deploymodelContainer.style.display = 'grid';
-
-//     // console.log(selectedTableSchema.columns)
-//     // let features = [];
-//     // for (columns of selectedTableSchema.columns) {
-//     //     if (selectedColumn !== columns.name){
-//     //         features.push(columns.name);
-//     //     }
-            
-//     // }
-//     // console.log(features)
-
-//     let features = [
-//     "Id",
-//     "SepalLengthCm",
-//     "SepalWidthCm",
-//     "PetalLengthCm",
-//     "PetalWidthCm"
-// ];
-
-
-
-//     // Get the container where the inputs will be added
-//     const container = document.getElementById('deploymodelContainer');
-
-//     // Clear the container (if needed)
-//     container.innerHTML = '';
-
-//     features.forEach((feature) => {
-//         // Create an input for each feature with a placeholder
-//         const input = document.createElement('input');
-//         input.type = 'text';
-//         input.name = feature;
-//         input.id = feature;
-//         input.placeholder = feature;
-    
-//         // Append the input to the container
-//         container.appendChild(input);
-//     });
-    
-//     // Create and append the submit button
-//     const submitButton = document.createElement('button');
-//     submitButton.id = 'predictButton';
-//     submitButton.textContent = 'Submit';
-//     submitButton.addEventListener('click', () => {
-//         // Handle form submission logic here
-//         alert('Form submitted!');
-//     });
-//     container.appendChild(submitButton);
-
-// }
 
 async function deployModel(dashId, widgetId) {
     cancel = true;
@@ -1011,7 +877,6 @@ async function deployModel(dashId, widgetId) {
     providerContainer.style.display = 'none';
     modelInfoTableContainer.innerHTML = '';
     modelInfoTableContainer.style.display = 'none';
-    // edaContainer.style.display = 'block';
     deploymodelContainer.style.display = 'block';
 
     // Adding the iframe to the deploymodelContainer with dynamic dashId and widgetId
@@ -1048,14 +913,12 @@ async function chatBot() {
     deploymodelContainer.style.display = 'none';
     chatbotContainer.style.display = 'block';
 
-    // Adding the iframe to the deploymodelContainer with dynamic dashId and widgetId
+    // Only if you are using Chatbot( for now need to hardcode domian name and dashbaord id)
     chatbotContainer.innerHTML = `
-        <iframe width="100%" height="100%" frameborder="0" src="${protocol}://10.176.10.190/app/main/dashboards/66b91b97494ec70033812004?embed=true&r=false"></iframe>
+        <iframe width="100%" height="100%" frameborder="0" src="${protocol}://<your_IP-or-Domain>/app/main/dashboards/<dash_id>?embed=true&r=false"></iframe>
     `;
 }
 
-
-// Attach functions to the global window object
 window.addData = addData;
 window.eda = eda;
 window.modelTraining = modelTraining;

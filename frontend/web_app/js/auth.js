@@ -14,7 +14,7 @@ export const getToken = () => {
 
 export const setUrl = (url, protocol) => {
     sessionStorage.setItem('sisenseUrl', url);
-    sessionStorage.setItem('sisenseProtocol', protocol);  // Store protocol
+    sessionStorage.setItem('sisenseProtocol', protocol); 
 };
 
 export const getUrl = () => {
@@ -22,14 +22,14 @@ export const getUrl = () => {
 };
 
 export const getProtocol = () => {
-    return sessionStorage.getItem('sisenseProtocol') || 'https';  // Default to https
+    return sessionStorage.getItem('sisenseProtocol') || 'https';  
 };
 
 export const createObject = async () => {
     const urlInput = document.querySelector('#url');
     const usernameInput = document.querySelector('#username');
     const passwordInput = document.querySelector('#password');
-    const errorMessage = document.querySelector('#error-message'); // Element to show errors
+    const errorMessage = document.querySelector('#error-message'); 
 
     if (urlInput && usernameInput && passwordInput) {
         const url = urlInput.value.trim();
@@ -46,7 +46,6 @@ export const createObject = async () => {
         sisenseLoginCredential.username = username;
         sisenseLoginCredential.password = password;
 
-        // Call API with the login credentials
         await callApi(sisenseLoginCredential);
     } else {
         console.error('One or more input elements not found.');
@@ -92,7 +91,6 @@ const callApi = async (loginCredentials) => {
             if (response.ok) {
                 const result = await response.json();
 
-                // Store token, URL, and protocol
                 setToken(result.access_token);
                 setUrl(url, base.protocol);
 
@@ -100,7 +98,7 @@ const callApi = async (loginCredentials) => {
                 window.location.href = '/templates/addData.html';
 
                 success = true;
-                break; // Exit loop on success
+                break; 
             } else {
                 console.error(`API call failed on ${base.url}`);
             }

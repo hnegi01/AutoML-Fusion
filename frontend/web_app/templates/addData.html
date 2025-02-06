@@ -17,7 +17,6 @@
                     <label><input type="radio" name="filter" onclick="eda()" value="EDA"> EDA</label>                  
                     <label><input type="radio" name="filter" onclick="modelTraining()" id="xs"> Model Training </label>
                     <label><input type="radio" name="filter" onclick="downloadModel()"> Download Model</label>
-                    <!-- <label><input type="radio" name="filter" onclick="deployModel()"> Deploy Model</label> -->
                     <label><input type="radio" name="filter" value="Deploy Model"> Inference </label>
                     <label><input type="radio" name="filter" onclick="chatBot()" value="Gen AI"> Gen AI</label>
                 </form>
@@ -25,8 +24,8 @@
         <div class="header">
             <img src="/images/Sisense_logo_new.webp" class="sisense-img" alt="Sisense logo">
 
-        <div id="dataModelTableContainer"></div> <!-- Container for the dropdown -->
-        <div id="schemaContainer"></div> <!-- Container for the dropdown -->
+        <div id="dataModelTableContainer"></div>
+        <div id="schemaContainer"></div> 
         <div id="columnContainer"></div>
         <div id="buttonContainer"></div>
         <div id="edaContainer" style="display: none;"></div>
@@ -52,7 +51,7 @@
         <div id="modelInfoTableContainer" style="display: none;"></div>
         <div id="deploymodelContainer" style="display: none;"></div>
         
-        <!-- Chatbot Section -->
+
         <div id="chatbotContainer" style="display: none;"></div>
 
     </div>
