@@ -1,6 +1,4 @@
 import { getToken, getUrl, getProtocol } from './auth.js';
-import config from './config.json';
-const flaskurl = config.FLASK_API_URL;
 const apiUrl = getUrl();
 const token = getToken();
 const protocol = getProtocol();
